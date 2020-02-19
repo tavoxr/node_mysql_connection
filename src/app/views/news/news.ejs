@@ -12,25 +12,7 @@
     <nav class="navbar navbar-light " style="background-color: #a283ac; color:#fff;">
         <div class="container">
             <a class="navbar-brand text-center" href="#">News Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav text-center">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
+       
         </div>
         
       </nav>
@@ -47,13 +29,18 @@
                
 
                     
-                        <li class="media">
+                        <li class="media mb-4 ">
                           
                           <div class="media-body">
-                            <h3 class="mt-0 mb-1"> <%=newInfo.title%></h3>
+                            <h3 class="mt-2 mb-1"> <%=newInfo.title%></h3>
                             <p><%=  newInfo.date_created %></p>
                             <p><%= newInfo.news %> </p>
-                           
+                            <a href="/delete/<%= newInfo.id_news%>"  class="btn btn-danger">
+                                Delete
+                            </a>
+                            <a href="/edit/<%= newInfo.id_news %>" class="btn btn-primary">
+                                Edit
+                            </a>
                           </div>
                         </li>
                    
@@ -61,7 +48,7 @@
                     
                    
         <%}%>
-            </ul>
+    </ul>
          </div>
         <div class="col-md-4 mt-auto ml-2 p-4 card" >
            <form action="/" method="POST" class="card-body">
@@ -71,7 +58,7 @@
                 <div class="form-group">
                     <label for="title">Add Title</label>
                     <input  type="text" class="form-control" name="title" id="title"
-                            placeholder="Title" autofocus
+                            placeholder="Title"
                     />
 
                 </div>

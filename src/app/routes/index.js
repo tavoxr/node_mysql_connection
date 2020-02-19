@@ -34,4 +34,45 @@ router.post('/',async(req,res)=>{
 })
 
 
+router.get('/delete/:id',async(req,res)=>{
+
+          const  {id}= req.params
+        await pool.query('DELETE FROM news WHERE id_news=?',[id])
+
+        res.redirect('/')
+
+
+})
+
+router.get('/edit/:id', async (req,res)=>{
+
+    const {id}= req.params
+   
+
+
+    const get_news= await pool.query('SELECT * FROM news WHERE id_news=?',[id])
+
+    res.render('news/edit',{get_news: get_news[0]})
+
+
+
+
+})
+
+router.post('/edit/:id', async(req,res)=>{
+
+    const {id}= req.params
+    const {title,news}= req.body
+    const update_news={
+        title,
+        news
+    }
+
+    await pool.query('UPDATE news SET ? WHERE id_news=?',[update_news, id])
+
+    res.redirect('/')
+
+})
+
+
 module.exports= router
